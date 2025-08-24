@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Mi Blog</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body { background: #f9f9f9; }
+    header { background: #333; color: #fff; padding: 15px; }
+    header h1 { margin: 0; font-size: 24px; }
+    nav a { color: #fff; margin-left: 15px; text-decoration: none; }
+    .banner img { width: 100%; max-height: 400px; object-fit: cover; }
+    footer { background: #222; color: #fff; padding: 40px 20px; margin-top: 40px; }
+    footer h5 { color: #ddd; }
+  </style>
+</head>
+<body>
+  <header class="d-flex justify-content-between align-items-center">
+    <h1>Mi Blog</h1>
+    <nav>
+      <a href="/">Home</a>
+      <a href="/proyectos">Proyectos</a>
+      <a href="/videos">Videos</a>
+      <a href="#">Contacto</a>
+    </nav>
+  </header>
+
+  <main class="container mt-4">
+    {% extends "base.html" %}
+
+    {% block content %}
+
+    <!-- 🎡 Banner tipo Carousel -->
+    <div id="bannerCarousel" class="carousel slide mb-4" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="{{ url_for('static', filename='banner1.png') }}" class="d-block w-100" alt="Banner 1">
+        </div>
+        <div class="carousel-item">
+          <img src="{{ url_for('static', filename='banner2.png') }}" class="d-block w-100" alt="Banner 2">
+        </div>
+        <div class="carousel-item">
+          <img src="{{ url_for('static', filename='banner3.png') }}" class="d-block w-100" alt="Banner 3">
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#bannerCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon"></span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#bannerCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon"></span>
+      </button>
+    </div>
+
+    <!-- 📑 Sección de artículos -->
+    <div class="row">
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://picsum.photos/400/200?random=1" class="card-img-top" alt="Artículo 1">
+          <div class="card-body">
+            <h5 class="card-title">Lorem Ipsum</h5>
+            <p class="card-text">Texto de ejemplo para el artículo 1...</p>
+            <a href="#" class="btn btn-sm btn-dark">Leer más</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://picsum.photos/400/200?random=2" class="card-img-top" alt="Artículo 2">
+          <div class="card-body">
+            <h5 class="card-title">Lorem Ipsum</h5>
+            <p class="card-text">Texto de ejemplo para el artículo 2...</p>
+            <a href="#" class="btn btn-sm btn-dark">Leer más</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://picsum.photos/400/200?random=3" class="card-img-top" alt="Artículo 3">
+          <div class="card-body">
+            <h5 class="card-title">Lorem Ipsum</h5>
+            <p class="card-text">Texto de ejemplo para el artículo 3...</p>
+            <a href="#" class="btn btn-sm btn-dark">Leer más</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    {% endblock %}
+
+  </main>
+
+  <footer class="container-fluid">
+    <div class="row">
+      <div class="col-md-4">
+        <h5>Labels</h5>
+        <ul class="list-unstyled">
+          <li>Lorem 1</li>
+          <li>Lorem 2</li>
+          <li>Lorem 3</li>
+          <li>Lorem 4</li>
+        </ul>
+      </div>
+      <div class="col-md-4">
+        <h5>Blogroll</h5>
+        <ul class="list-unstyled">
+          <li>BTemplates</li>
+          <li>BTemplates Blog</li>
+          <li>Way2themes</li>
+        </ul>
+      </div>
+      <div class="col-md-4">
+        <h5>Contacto</h5>
+        <form>
+          <input type="text" class="form-control mb-2" placeholder="Nombre">
+          <input type="email" class="form-control mb-2" placeholder="Email">
+          <textarea class="form-control mb-2" placeholder="Mensaje"></textarea>
+          <button class="btn btn-primary">Enviar</button>
+        </form>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
