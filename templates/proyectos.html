@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flowchart</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            background: #202020;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #container {
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+            position: relative;
+        }
+
+        #flowchart {
+            cursor: grab;
+            transform-origin: center center;
+            transition: transform 0.1s ease-out;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <!-- 🔽 Cambia "flowchart.png" por el nombre real de tu imagen -->
+        <img id="flowchart" src="{{ url_for('static', filename='images/flowchart.png') }}" alt="Flowchart">
+    </div>
+
+    <script>
+        const img = document.getElementById("flowchart");
+        let scale = 1;
+        let posX = 0, posY = 0;
+        let isDragging = false;
+        let startX, startY;
+
+        // Zoom con rueda del mouse
+        document.addEventListener("wheel", (e) => {
+            e.preventDefault();
+            if (e.deltaY < 0) {
+                scale *= 1.1; // Zoom in
+            } else {
+                scale /= 1.1; // Zoom out
+            }
+            updateTransform();
+        });
+
+        // Arrastrar con el mouse
+        img.addEventListener("mousedown", (e) => {
+            isDragging = true;
+            startX = e.clientX - posX;
+            startY = e.clientY - posY;
+            img.style.cursor = "grabbing";
+        });
+
+        document.addEventListener("mouseup", () => {
+            isDragging = false;
+            img.style.cursor = "grab";
+        });
+
+        document.addEventListener("mousemove", (e) => {
+            if (!isDragging) return;
+            posX = e.clientX - startX;
+            posY = e.clientY - startY;
+            updateTransform();
+        });
+
+        function updateTransform() {
+            img.style.transform = `translate(${posX}px, ${posY}px) scale(${scale})`;
+        }
+    </script>
+</body>
+</html>
