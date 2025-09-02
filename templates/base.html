@@ -12,16 +12,39 @@
     }
 
     header {
-      background: #333;
-      color: #fff;
-      padding: 15px;
+      position: relative;
+      padding: 10px 20px;
+      background: #202020;
+      color: white;
     }
 
-    .container {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      /* por defecto 3 columnas */
-      gap: 1rem;
+    nav {
+      display: flex;
+      gap: 15px;
+    }
+
+    .hamburger {
+      display: none;
+      font-size: 24px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: white;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+    }
+
+    /* Botón hamburguesa oculto en escritorio */
+    .menu-toggle {
+      display: none;
+      font-size: 26px;
+      background: none;
+      border: none;
+      color: white;
+      cursor: pointer;
     }
 
     header h1 {
@@ -89,6 +112,45 @@
         width: 100% !important;
         margin: 10px 0;
       }
+
+      nav {
+        display: none;
+        /* oculto por defecto */
+        position: absolute;
+        top: 100%;
+        /* justo debajo del header */
+        right: 0;
+        background: #202020;
+        flex-direction: column;
+        width: 200px;
+        padding: 10px;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
+        z-index: 999;
+        /* asegura que quede encima del carrusel */
+      }
+
+      nav a {
+        padding: 10px;
+        border-bottom: 1px solid #333;
+        text-align: right;
+      }
+
+      .hamburger {
+        display: block;
+      }
+
+      nav.active {
+        display: flex;
+        /* se muestra al activar */
+      }
+
+      nav.show {
+        display: flex;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
     }
   </style>
 </head>
@@ -96,6 +158,7 @@
 <body>
   <header class="d-flex justify-content-between align-items-center">
     <h1>Living My English Journey</h1>
+    <button class="hamburger" aria-label="Menu">&#9776;</button>
     <nav>
       <a href="/">Home</a>
       <a href="/proyectos">Projects</a>
@@ -141,6 +204,14 @@
 
   <!-- 🚀 Script necesario para que el carousel funcione -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    const hamburger = document.querySelector('.hamburger');
+    const nav = document.querySelector('header nav');
+
+    hamburger.addEventListener('click', () => {
+      nav.classList.toggle('active');
+    });
+  </script>
 </body>
 
 </html>
