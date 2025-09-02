@@ -67,7 +67,7 @@
     </div>
   </div>
   <div class="col-md-4 col-sm-6 mb-4">
-    <div class="card h-100 shadow-sm">
+    <div class="card h-100 shadow-sm" data-card-id="article2">
       <img src="{{ url_for('static', filename='images/10.png') }}" class="card-img-top" alt="Artículo 2">
       <div class="card-body">
         <h5 class="card-title">🔥 SHOOOT CODE! 🔥</h5>
@@ -100,15 +100,18 @@
 
         <!-- 🔹 Caja de comentarios -->
         <div class="mt-3">
-          <textarea class="form-control form-control-sm" rows="2" placeholder="Add a comment..."></textarea>
-          <button class="btn btn-sm btn-primary mt-2">Comment</button>
+          <textarea class="form-control form-control-sm comment-input" rows="2"
+            placeholder="Add a comment..."></textarea>
+          <button class="btn btn-sm btn-primary mt-2" onclick="addComment(this)">Comment</button>
         </div>
+        <!-- 🔹 Lista de comentarios -->
+        <div class="comments-list mt-2"></div>
       </div>
     </div>
   </div>
 
   <div class="col-md-4 col-sm-6 mb-4">
-    <div class="card h-100 shadow-sm">
+    <div class="card h-100 shadow-sm" data-card-id="article3">
       <img src="{{ url_for('static', filename='images/11.PNG') }}" class="card-img-top" alt="Artículo 2">
       <div class="card-body">
         <h5 class="card-title">Linus Torvalds: The Rebel Genius Who Democratized Tech</h5>
@@ -138,15 +141,18 @@
 
         <!-- 🔹 Caja de comentarios -->
         <div class="mt-3">
-          <textarea class="form-control form-control-sm" rows="2" placeholder="Add a comment..."></textarea>
-          <button class="btn btn-sm btn-primary mt-2">Comment</button>
+          <textarea class="form-control form-control-sm comment-input" rows="2"
+            placeholder="Add a comment..."></textarea>
+          <button class="btn btn-sm btn-primary mt-2" onclick="addComment(this)">Comment</button>
         </div>
+        <!-- 🔹 Lista de comentarios -->
+        <div class="comments-list mt-2"></div>
       </div>
     </div>
   </div>
 
   <div class="col-md-4 col-sm-6 mb-4">
-    <div class="card h-100 shadow-sm">
+    <div class="card h-100 shadow-sm" data-card-id="article4">
       <img src="{{ url_for('static', filename='images/12.PNG') }}" class="card-img-top" alt="Artículo 3">
       <div class="card-body">
         <h5 class="card-title">Santiago’s Story: Youth, Passion, and Future</h5>
@@ -173,14 +179,17 @@
 
         <!-- 🔹 Caja de comentarios -->
         <div class="mt-3">
-          <textarea class="form-control form-control-sm" rows="2" placeholder="Add a comment..."></textarea>
-          <button class="btn btn-sm btn-primary mt-2">Comment</button>
+          <textarea class="form-control form-control-sm comment-input" rows="2"
+            placeholder="Add a comment..."></textarea>
+          <button class="btn btn-sm btn-primary mt-2" onclick="addComment(this)">Comment</button>
         </div>
+        <!-- 🔹 Lista de comentarios -->
+        <div class="comments-list mt-2"></div>
       </div>
     </div>
   </div>
   <div class="col-md-4 col-sm-6 mb-4">
-    <div class="card h-100 shadow-sm">
+    <div class="card h-100 shadow-sm" data-card-id="article5">
       <img src="{{ url_for('static', filename='images/16.PNG') }}" class="card-img-top" alt="Artículo 5">
       <div class="card-body">
         <h5 class="card-title">🐯 The Power of Movement: The Tiger in 3D</h5>
@@ -205,14 +214,17 @@
 
         <!-- 🔹 Caja de comentarios -->
         <div class="mt-3">
-          <textarea class="form-control form-control-sm" rows="2" placeholder="Add a comment..."></textarea>
-          <button class="btn btn-sm btn-primary mt-2">Comment</button>
+          <textarea class="form-control form-control-sm comment-input" rows="2"
+            placeholder="Add a comment..."></textarea>
+          <button class="btn btn-sm btn-primary mt-2" onclick="addComment(this)">Comment</button>
         </div>
+        <!-- 🔹 Lista de comentarios -->
+        <div class="comments-list mt-2"></div>
       </div>
     </div>
   </div>
   <div class="col-md-4 col-sm-6 mb-4">
-    <div class="card h-100 shadow-sm">
+    <div class="card h-100 shadow-sm" data-card-id="article6">
       <img src="{{ url_for('static', filename='images/1FH.png') }}" class="card-img-top" alt="Artículo 6">
       <div class="card-body">
         <h5 class="card-title">🌐 Connecting Experiences: From Web to Messaging and Voice in One Flow</h5>
@@ -238,15 +250,18 @@
 
         <!-- 🔹 Caja de comentarios -->
         <div class="mt-3">
-          <textarea class="form-control form-control-sm" rows="2" placeholder="Add a comment..."></textarea>
-          <button class="btn btn-sm btn-primary mt-2">Comment</button>
+          <textarea class="form-control form-control-sm comment-input" rows="2"
+            placeholder="Add a comment..."></textarea>
+          <button class="btn btn-sm btn-primary mt-2" onclick="addComment(this)">Comment</button>
         </div>
+        <!-- 🔹 Lista de comentarios -->
+        <div class="comments-list mt-2"></div>
       </div>
     </div>
   </div>
   <div class="row">
     <div class="col-md-4 col-sm-6 mb-4">
-      <div class="card h-100 shadow-sm">
+      <div class="card h-100 shadow-sm" data-card-id="article7">
         <img src="{{ url_for('static', filename='images/13.PNG') }}" class="card-img-top" alt="Artículo 4">
         <div class="card-body">
           <h5 class="card-title">🤖 Rocket Robot Boxing: Fun in Every Punch</h5>
@@ -273,15 +288,18 @@
 
           <!-- 🔹 Caja de comentarios -->
           <div class="mt-3">
-            <textarea class="form-control form-control-sm" rows="2" placeholder="Add a comment..."></textarea>
-            <button class="btn btn-sm btn-primary mt-2">Comment</button>
+            <textarea class="form-control form-control-sm comment-input" rows="2"
+              placeholder="Add a comment..."></textarea>
+            <button class="btn btn-sm btn-primary mt-2" onclick="addComment(this)">Comment</button>
           </div>
+          <!-- 🔹 Lista de comentarios -->
+          <div class="comments-list mt-2"></div>
         </div>
       </div>
     </div>
 
     <div class="col-md-4 col-sm-6 mb-4">
-      <div class="card h-100 shadow-sm">
+      <div class="card h-100 shadow-sm" data-card-id="article8">
         <img src="{{ url_for('static', filename='images/14.PNG') }}" class="card-img-top" alt="Artículo 5">
         <div class="card-body">
           <h5 class="card-title">🎬 Beken’s 3D Reel: Creativity and Technology in Action</h5>
@@ -307,15 +325,18 @@
 
           <!-- 🔹 Caja de comentarios -->
           <div class="mt-3">
-            <textarea class="form-control form-control-sm" rows="2" placeholder="Add a comment..."></textarea>
-            <button class="btn btn-sm btn-primary mt-2">Comment</button>
+            <textarea class="form-control form-control-sm comment-input" rows="2"
+              placeholder="Add a comment..."></textarea>
+            <button class="btn btn-sm btn-primary mt-2" onclick="addComment(this)">Comment</button>
           </div>
+          <!-- 🔹 Lista de comentarios -->
+          <div class="comments-list mt-2"></div>
         </div>
       </div>
     </div>
 
     <div class="col-md-4 col-sm-6 mb-4">
-      <div class="card h-100 shadow-sm">
+      <div class="card h-100 shadow-sm" data-card-id="article9">
         <img src="{{ url_for('static', filename='images/15.png') }}" class="card-img-top" alt="Artículo 6">
         <div class="card-body">
           <h5 class="card-title">🚀 From Full Stack to Cybersecurity: My Journey in a Job Interview</h5>
@@ -341,9 +362,12 @@
 
           <!-- 🔹 Caja de comentarios -->
           <div class="mt-3">
-            <textarea class="form-control form-control-sm" rows="2" placeholder="Add a comment..."></textarea>
-            <button class="btn btn-sm btn-primary mt-2">Comment</button>
+            <textarea class="form-control form-control-sm comment-input" rows="2"
+              placeholder="Add a comment..."></textarea>
+            <button class="btn btn-sm btn-primary mt-2" onclick="addComment(this)">Comment</button>
           </div>
+          <!-- 🔹 Lista de comentarios -->
+          <div class="comments-list mt-2"></div>
         </div>
       </div>
     </div>
