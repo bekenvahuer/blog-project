@@ -26,19 +26,43 @@
 <!-- 📑 Sección de artículos -->
 <div class="row">
   <div class="col-md-4 col-sm-6 mb-4">
-    <div class="card h-100 shadow-sm">
+    <div class="card h-100 shadow-sm" data-card-id="article1">
       <img src="{{ url_for('static', filename='images/BlenderMouse.png') }}" class="card-img-top" alt="Artículo 1">
       <div class="card-body">
         <h5 class="card-title">PEST Analysis for the Implementation of AI Smart Boxes in Colombia:</h5>
-        <p class="card-text"> A Strategic Response to the Organic Traffic Crisis in the Post-Click Era.
+        <p class="card-text">
+          A Strategic Response to the Organic Traffic Crisis in the Post-Click Era.
           Assessing the Political, Economic, Social, and Technological environment in light of the
           new paradigm of generative AI and its impact on corporate digital sovereignty.
           This study examines the influence of the PEST framework on the deployment of local
           fine-tuning solutions through AI-powered smart boxes—an urgent strategic response to the rise
           of generative AI. This new paradigm, dominated by response engines that centralize
           information, is already causing the collapse of traditional web traffic, with drops of up to 50% for
-          certain publishers, according to a Wall Street Journal analysis cited by Forbes Colombia.</p>
+          certain publishers, according to a Wall Street Journal analysis cited by Forbes Colombia.
+        </p>
         <a href="#" class="btn btn-sm btn-dark">Read more</a>
+      </div>
+
+      <!-- 🔹 Sección de reacciones -->
+      <div class="card-footer bg-light">
+        <div class="d-flex justify-content-between align-items-center">
+          <div>
+            <button class="btn btn-sm btn-outline-success me-1" onclick="likePost(this)">👍</button>
+            <span class="like-count">0</span>
+            <button class="btn btn-sm btn-outline-danger ms-2" onclick="dislikePost(this)">👎</button>
+            <span class="dislike-count">0</span>
+          </div>
+          <button class="btn btn-sm btn-outline-secondary" onclick="copyContent(this)">📋 Copy</button>
+        </div>
+
+        <!-- 🔹 Caja de comentarios -->
+        <div class="mt-3">
+          <textarea class="form-control form-control-sm comment-input" rows="2"
+            placeholder="Add a comment..."></textarea>
+          <button class="btn btn-sm btn-primary mt-2" onclick="addComment(this)">Comment</button>
+        </div>
+        <!-- 🔹 Lista de comentarios -->
+        <div class="comments-list mt-2"></div>
       </div>
     </div>
   </div>
@@ -59,7 +83,26 @@
 
           🎮 Grab your controller, hit START, and let’s code together.
           👉 Enroll now and build your first Python game!</p>
-        <a href="#" class="btn btn-sm btn-dark">Read more</a>
+        <!--<a href="#" class="btn btn-sm btn-dark">Read more</a>-->
+      </div>
+
+      <!-- 🔹 Sección de reacciones -->
+      <div class="card-footer bg-light">
+        <div class="d-flex justify-content-between align-items-center">
+          <div>
+            <button class="btn btn-sm btn-outline-success me-1" onclick="likePost(this)">👍</button>
+            <span class="like-count">0</span>
+            <button class="btn btn-sm btn-outline-danger ms-2" onclick="dislikePost(this)">👎</button>
+            <span class="dislike-count">0</span>
+          </div>
+          <button class="btn btn-sm btn-outline-secondary" onclick="copyContent(this)">📋 Copy</button>
+        </div>
+
+        <!-- 🔹 Caja de comentarios -->
+        <div class="mt-3">
+          <textarea class="form-control form-control-sm" rows="2" placeholder="Add a comment..."></textarea>
+          <button class="btn btn-sm btn-primary mt-2">Comment</button>
+        </div>
       </div>
     </div>
   </div>
@@ -80,6 +123,25 @@
           humor was a radical idea: technology should belong to everyone, not just corporations.</p>
         <a href="#" class="btn btn-sm btn-dark">Read more</a>
       </div>
+
+      <!-- 🔹 Sección de reacciones -->
+      <div class="card-footer bg-light">
+        <div class="d-flex justify-content-between align-items-center">
+          <div>
+            <button class="btn btn-sm btn-outline-success me-1" onclick="likePost(this)">👍</button>
+            <span class="like-count">0</span>
+            <button class="btn btn-sm btn-outline-danger ms-2" onclick="dislikePost(this)">👎</button>
+            <span class="dislike-count">0</span>
+          </div>
+          <button class="btn btn-sm btn-outline-secondary" onclick="copyContent(this)">📋 Copy</button>
+        </div>
+
+        <!-- 🔹 Caja de comentarios -->
+        <div class="mt-3">
+          <textarea class="form-control form-control-sm" rows="2" placeholder="Add a comment..."></textarea>
+          <button class="btn btn-sm btn-primary mt-2">Comment</button>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -95,6 +157,90 @@
           growing interest in technology and programming, he is exploring academic paths to build a solid professional
           future full of opportunities.</p>
         <a href="#" class="btn btn-sm btn-dark">Read more</a>
+      </div>
+
+      <!-- 🔹 Sección de reacciones -->
+      <div class="card-footer bg-light">
+        <div class="d-flex justify-content-between align-items-center">
+          <div>
+            <button class="btn btn-sm btn-outline-success me-1" onclick="likePost(this)">👍</button>
+            <span class="like-count">0</span>
+            <button class="btn btn-sm btn-outline-danger ms-2" onclick="dislikePost(this)">👎</button>
+            <span class="dislike-count">0</span>
+          </div>
+          <button class="btn btn-sm btn-outline-secondary" onclick="copyContent(this)">📋 Copy</button>
+        </div>
+
+        <!-- 🔹 Caja de comentarios -->
+        <div class="mt-3">
+          <textarea class="form-control form-control-sm" rows="2" placeholder="Add a comment..."></textarea>
+          <button class="btn btn-sm btn-primary mt-2">Comment</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4 col-sm-6 mb-4">
+    <div class="card h-100 shadow-sm">
+      <img src="{{ url_for('static', filename='images/16.PNG') }}" class="card-img-top" alt="Artículo 5">
+      <div class="card-body">
+        <h5 class="card-title">🐯 The Power of Movement: The Tiger in 3D</h5>
+        <p class="card-text">In this video, you’ll meet a unique 3D-created tiger, brought to life with a walk full of
+          strength and style while the song “Anxiety” by Doechii plays in the background. It’s a fusion of digital art
+          and music that conveys energy, character, and creativity in every step. 🚀 Hit play and enjoy this 3D
+          animation showcase where technique and expression come together!</p>
+        <a href="#" class="btn btn-sm btn-dark">Read more</a>
+      </div>
+
+      <!-- 🔹 Sección de reacciones -->
+      <div class="card-footer bg-light">
+        <div class="d-flex justify-content-between align-items-center">
+          <div>
+            <button class="btn btn-sm btn-outline-success me-1" onclick="likePost(this)">👍</button>
+            <span class="like-count">0</span>
+            <button class="btn btn-sm btn-outline-danger ms-2" onclick="dislikePost(this)">👎</button>
+            <span class="dislike-count">0</span>
+          </div>
+          <button class="btn btn-sm btn-outline-secondary" onclick="copyContent(this)">📋 Copy</button>
+        </div>
+
+        <!-- 🔹 Caja de comentarios -->
+        <div class="mt-3">
+          <textarea class="form-control form-control-sm" rows="2" placeholder="Add a comment..."></textarea>
+          <button class="btn btn-sm btn-primary mt-2">Comment</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4 col-sm-6 mb-4">
+    <div class="card h-100 shadow-sm">
+      <img src="{{ url_for('static', filename='images/1FH.png') }}" class="card-img-top" alt="Artículo 6">
+      <div class="card-body">
+        <h5 class="card-title">🌐 Connecting Experiences: From Web to Messaging and Voice in One Flow</h5>
+        <p class="card-text">In this video, you’ll discover a visual map of how users, applications, and systems
+          interact within a modern digital ecosystem. From OAuth 2.0 authentication in React and Laravel, to payment
+          processing, sales reports via messaging, and voice assistant integration powered by an LLM, this flow
+          demonstrates how technology comes together to deliver complete, secure, and dynamic experiences. 🚀 Hit play
+          and see how every path in your applications connects!</p>
+        <a href="#" class="btn btn-sm btn-dark">Read more</a>
+      </div>
+
+      <!-- 🔹 Sección de reacciones -->
+      <div class="card-footer bg-light">
+        <div class="d-flex justify-content-between align-items-center">
+          <div>
+            <button class="btn btn-sm btn-outline-success me-1" onclick="likePost(this)">👍</button>
+            <span class="like-count">0</span>
+            <button class="btn btn-sm btn-outline-danger ms-2" onclick="dislikePost(this)">👎</button>
+            <span class="dislike-count">0</span>
+          </div>
+          <button class="btn btn-sm btn-outline-secondary" onclick="copyContent(this)">📋 Copy</button>
+        </div>
+
+        <!-- 🔹 Caja de comentarios -->
+        <div class="mt-3">
+          <textarea class="form-control form-control-sm" rows="2" placeholder="Add a comment..."></textarea>
+          <button class="btn btn-sm btn-primary mt-2">Comment</button>
+        </div>
       </div>
     </div>
   </div>
@@ -112,6 +258,25 @@
           </p>
           <a href="#" class="btn btn-sm btn-dark">Read more</a>
         </div>
+
+        <!-- 🔹 Sección de reacciones -->
+        <div class="card-footer bg-light">
+          <div class="d-flex justify-content-between align-items-center">
+            <div>
+              <button class="btn btn-sm btn-outline-success me-1" onclick="likePost(this)">👍</button>
+              <span class="like-count">0</span>
+              <button class="btn btn-sm btn-outline-danger ms-2" onclick="dislikePost(this)">👎</button>
+              <span class="dislike-count">0</span>
+            </div>
+            <button class="btn btn-sm btn-outline-secondary" onclick="copyContent(this)">📋 Copy</button>
+          </div>
+
+          <!-- 🔹 Caja de comentarios -->
+          <div class="mt-3">
+            <textarea class="form-control form-control-sm" rows="2" placeholder="Add a comment..."></textarea>
+            <button class="btn btn-sm btn-primary mt-2">Comment</button>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -126,6 +291,25 @@
             attention to detail I put into every project. 🚀 Hit play and join me on this visual journey showcasing the
             best of my work in the digital world!</p>
           <a href="#" class="btn btn-sm btn-dark">Read more</a>
+        </div>
+
+        <!-- 🔹 Sección de reacciones -->
+        <div class="card-footer bg-light">
+          <div class="d-flex justify-content-between align-items-center">
+            <div>
+              <button class="btn btn-sm btn-outline-success me-1" onclick="likePost(this)">👍</button>
+              <span class="like-count">0</span>
+              <button class="btn btn-sm btn-outline-danger ms-2" onclick="dislikePost(this)">👎</button>
+              <span class="dislike-count">0</span>
+            </div>
+            <button class="btn btn-sm btn-outline-secondary" onclick="copyContent(this)">📋 Copy</button>
+          </div>
+
+          <!-- 🔹 Caja de comentarios -->
+          <div class="mt-3">
+            <textarea class="form-control form-control-sm" rows="2" placeholder="Add a comment..."></textarea>
+            <button class="btn btn-sm btn-primary mt-2">Comment</button>
+          </div>
         </div>
       </div>
     </div>
@@ -142,37 +326,101 @@
             simulated interview and explore the vision that drives my technological journey!</p>
           <a href="#" class="btn btn-sm btn-dark">Read more</a>
         </div>
-      </div>
-    </div>
-    <div class="col-md-4 col-sm-6 mb-4">
-      <div class="card h-100 shadow-sm">
-        <img src="{{ url_for('static', filename='images/16.PNG') }}" class="card-img-top" alt="Artículo 5">
-        <div class="card-body">
-          <h5 class="card-title">🐯 The Power of Movement: The Tiger in 3D</h5>
-          <p class="card-text">In this video, you’ll meet a unique 3D-created tiger, brought to life with a walk full of
-            strength and style while the song “Anxiety” by Doechii plays in the background. It’s a fusion of digital art
-            and music that conveys energy, character, and creativity in every step. 🚀 Hit play and enjoy this 3D
-            animation showcase where technique and expression come together!</p>
-          <a href="#" class="btn btn-sm btn-dark">Read more</a>
+
+        <!-- 🔹 Sección de reacciones -->
+        <div class="card-footer bg-light">
+          <div class="d-flex justify-content-between align-items-center">
+            <div>
+              <button class="btn btn-sm btn-outline-success me-1" onclick="likePost(this)">👍</button>
+              <span class="like-count">0</span>
+              <button class="btn btn-sm btn-outline-danger ms-2" onclick="dislikePost(this)">👎</button>
+              <span class="dislike-count">0</span>
+            </div>
+            <button class="btn btn-sm btn-outline-secondary" onclick="copyContent(this)">📋 Copy</button>
+          </div>
+
+          <!-- 🔹 Caja de comentarios -->
+          <div class="mt-3">
+            <textarea class="form-control form-control-sm" rows="2" placeholder="Add a comment..."></textarea>
+            <button class="btn btn-sm btn-primary mt-2">Comment</button>
+          </div>
         </div>
       </div>
     </div>
 
-    <div class="col-md-4 col-sm-6 mb-4">
-      <div class="card h-100 shadow-sm">
-        <img src="{{ url_for('static', filename='images/1FH.png') }}" class="card-img-top" alt="Artículo 6">
-        <div class="card-body">
-          <h5 class="card-title">🌐 Connecting Experiences: From Web to Messaging and Voice in One Flow</h5>
-          <p class="card-text">In this video, you’ll discover a visual map of how users, applications, and systems
-            interact within a modern digital ecosystem. From OAuth 2.0 authentication in React and Laravel, to payment
-            processing, sales reports via messaging, and voice assistant integration powered by an LLM, this flow
-            demonstrates how technology comes together to deliver complete, secure, and dynamic experiences. 🚀 Hit play
-            and see how every path in your applications connects!</p>
-          <a href="#" class="btn btn-sm btn-dark">Read more</a>
-        </div>
-      </div>
-    </div>
 
   </div>
+
+  <script>
+    function initCard(card) {
+      const id = card.dataset.cardId;
+      if (!localStorage.getItem("card_" + id)) {
+        localStorage.setItem("card_" + id, JSON.stringify({ likes: 0, dislikes: 0, comments: [] }));
+      }
+      renderCardData(card);
+    }
+
+    function renderCardData(card) {
+      const id = card.dataset.cardId;
+      const data = JSON.parse(localStorage.getItem("card_" + id));
+      card.querySelector(".like-count").textContent = data.likes;
+      card.querySelector(".dislike-count").textContent = data.dislikes;
+      const commentsContainer = card.querySelector(".comments-list");
+      commentsContainer.innerHTML = "";
+      data.comments.forEach(t => {
+        const p = document.createElement("p");
+        p.classList.add("mb-1");
+        p.textContent = "💬 " + t;
+        commentsContainer.appendChild(p);
+      });
+    }
+
+    function likePost(btn) {
+      const card = btn.closest(".card");
+      const id = card.dataset.cardId;
+      const data = JSON.parse(localStorage.getItem("card_" + id));
+      data.likes++;
+      localStorage.setItem("card_" + id, JSON.stringify(data));
+      renderCardData(card);
+    }
+
+    function dislikePost(btn) {
+      const card = btn.closest(".card");
+      const id = card.dataset.cardId;
+      const data = JSON.parse(localStorage.getItem("card_" + id));
+      data.dislikes++;
+      localStorage.setItem("card_" + id, JSON.stringify(data));
+      renderCardData(card);
+    }
+
+    function copyContent(btn) {
+      const card = btn.closest(".card");
+      const text = card.querySelector(".card-text").innerText;
+      navigator.clipboard.writeText(text).then(() => {
+        btn.innerText = "✅ Copied!";
+        setTimeout(() => (btn.innerText = "📋 Copy"), 2000);
+      });
+    }
+
+    function addComment(btn) {
+      const card = btn.closest(".card");
+      const id = card.dataset.cardId;
+      const textarea = card.querySelector(".comment-input");
+      const comment = textarea.value.trim();
+      if (!comment) return;
+      const data = JSON.parse(localStorage.getItem("card_" + id));
+      data.comments.push(comment);
+      localStorage.setItem("card_" + id, JSON.stringify(data));
+      renderCardData(card);
+      textarea.value = "";
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      document.querySelectorAll(".card[data-card-id]").forEach(initCard);
+    });
+  </script>
+
+
+
 
   {% endblock %}
