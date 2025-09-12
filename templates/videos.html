@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Videos of My English Journey</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
+            color: #fff;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .description {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .instructions {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 15px;
+            margin: 20px 0;
+            text-align: left;
+        }
+
+        .instructions h3 {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .instructions ol {
+            padding-left: 20px;
+        }
+
+        .instructions li {
+            margin-bottom: 8px;
+            line-height: 1.5;
+        }
+
+        .video-gallery {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .video-card {
+            background: rgba(0, 0, 0, 0.6);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .video-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        .video-container {
+            position: relative;
+            width: 100%;
+            padding-top: 56.25%;
+            /* Relación de aspecto 16:9 */
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .video-info {
+            padding: 20px;
+        }
+
+        .video-title {
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+            color: #fff;
+        }
+
+        .video-description {
+            font-size: 1rem;
+            opacity: 0.8;
+            line-height: 1.5;
+        }
+
+        .add-video-section {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 30px;
+            border-radius: 15px;
+            margin-top: 30px;
+        }
+
+        .add-video-form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            text-align: left;
+            gap: 5px;
+        }
+
+        .form-group label {
+            font-weight: bold;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            padding: 12px;
+            border-radius: 8px;
+            border: none;
+            background: rgba(255, 255, 255, 0.9);
+            font-family: inherit;
+        }
+
+        .form-group textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        .iframe-input {
+            min-height: 120px;
+            font-family: monospace;
+            font-size: 0.9rem;
+        }
+
+        .btn {
+            padding: 12px 25px;
+            background: #ff5722;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: bold;
+            transition: background 0.3s ease;
+            margin-top: 10px;
+        }
+
+        .btn:hover {
+            background: #e64a19;
+        }
+
+        .code-output {
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 30px;
+            display: none;
+        }
+
+        .code-output h3 {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .generated-code {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            padding: 15px;
+            border-radius: 5px;
+            font-family: monospace;
+            white-space: pre-wrap;
+            overflow-x: auto;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        .copy-btn {
+            margin-top: 15px;
+            background: #4CAF50;
+        }
+
+        .copy-btn:hover {
+            background: #45a049;
+        }
+
+        .success-message {
+            background: rgba(76, 175, 80, 0.2);
+            border: 1px solid #4CAF50;
+            border-radius: 5px;
+            padding: 10px;
+            margin-top: 15px;
+            text-align: center;
+            display: none;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            padding: 20px;
+            opacity: 0.7;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .video-info {
+                padding: 15px;
+            }
+
+            .video-title {
+                font-size: 1.2rem;
+            }
+
+            .add-video-section {
+                padding: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.8rem;
+            }
+
+            .description {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-code"></i> Videos of My English Journey</h1>
+            <p class="description">Welcome to Videos of My English Journey! Here, you’ll find short and practical videos
+                that share my experiences learning English step by step. Each video is designed to help improve
+                vocabulary, pronunciation, and confidence while making the learning process fun and motivating.</p>
+
+            <!-- <div class="instructions">
+                <h3><i class="fas fa-info-circle"></i> Cómo usar este generador:</h3>
+                <ol>
+                    <li>En YouTube, haz clic en "Compartir" debajo del video</li>
+                    <li>Selecciona "Insertar" y copia el código iframe</li>
+                    <li>Pega el código en el campo "Código de inserción" a continuación</li>
+                    <li>Agrega un título y descripción (opcional)</li>
+                    <li>Haz clic en "Generar Código"</li>
+                    <li>Copia el código generado y pégalo en tu documento HTML</li>
+                </ol>
+            </div> -->
+        </header>
+
+        <div class="video-gallery" id="videoGallery">
+            <!-- Video: The Power of Movement -->
+            <div class="video-card">
+                <div class="video-container">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/i1FA61yDhCM?si=VOO1FJrXesQt1IoS"
+                        title="YouTube video player" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+                <div class="video-info">
+                    <h3 class="video-title">🐯 The Power of Movement: The Tiger in 3D</h3>
+                    <p class="video-description">In this video, you’ll meet a unique 3D-created tiger, brought to life
+                        with a walk full of strength and style while the song “Anxiety” by Doechii plays in the
+                        background.</p>
+                </div>
+            </div>
+            <!-- Video: Chicamocha -->
+            <div class="video-card">
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/6adUY604ZFo?si=o_vrwvrzX_nxfFPm"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen></iframe>
+                </div>
+                <div class="video-info">
+                    <h3 class="video-title">Chicamocha</h3>
+                    <p class="video-description">Chicamocha</p>
+                </div>
+            </div>
+            <!-- Video: 🎬 Beken’s 3D Reel: Creativity and Technology in Action -->
+            <div class="video-card">
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/MIRvI6eL9xk?si=xfQYT62O14mfd1CN"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen></iframe>
+                </div>
+                <div class="video-info">
+                    <h3 class="video-title">🎬 Beken’s 3D Reel: Creativity and Technology in Action</h3>
+                    <p class="video-description">In this video, I invite you to explore my portfolio of 3D-generated
+                        animations and scenes, where creativity blends with technical skills to bring unique visual
+                        experiences to life.</p>
+                </div>
+            </div>
+            <!-- Video: 🚀 From Full Stack to Cybersecurity: My Journey in a Job Interview -->
+            <div class="video-card">
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/ZuoGFxxVg2I?si=sG4nLySRkxo-XonR"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen></iframe>
+                </div>
+                <div class="video-info">
+                    <h3 class="video-title">🚀 From Full Stack to Cybersecurity: My Journey in a Job Interview</h3>
+                    <p class="video-description">In this video, you’ll discover my story as a Full Stack Developer with
+                        over 5 years of experience, my passion for developing video games with AR/VR, and how challenges
+                        have fueled my professional growth.</p>
+                </div>
+            </div>
+            <!-- Video: Santiago’s Story: Youth, Passion, and Future -->
+            <div class="video-card">
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/mbABKw0_mvo?si=8NekJnPVnczzcWqS"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen></iframe>
+                </div>
+                <div class="video-info">
+                    <h3 class="video-title">Santiago’s Story: Youth, Passion, and Future</h3>
+                    <p class="video-description">In this video, you’ll meet Santiago, a 19-year-old Colombian who grew
+                        up in Medellín and stands out for his discipline, passion, and vision for the future.</p>
+                </div>
+            </div>
+            <!-- Video: RocketRobotBoxing -->
+            <div class="video-card">
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/Y3ZAdgrCWAQ?si=4K5FlupB5PK8Lzzz"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen></iframe>
+                </div>
+                <div class="video-info">
+                    <h3 class="video-title">RocketRobotBoxing</h3>
+                    <p class="video-description">🤖 Rocket Robot Boxing: Fun in Every Punch
+                        In this promotional video, you’ll dive into the adrenaline-filled world of Rocket Robot Boxing,
+                        a 3D video game inspired by the classic Mattel toy, Rock ‘Em Sock ‘Em Robots.</p>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="add-video-section">
+            <h2><i class="fas fa-plus-circle"></i> Generate Code for New Video</h2>
+            <form class="add-video-form" id="addVideoForm">
+                <div class="form-group">
+                    <label for="videoIframe">YouTube Embed Code (iframe):</label>
+                    <textarea id="videoIframe" class="iframe-input"
+                        placeholder='<iframe width="560" height="315" src="https://www.youtube.com/embed/..." frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'
+                        required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="videoTitle">Video Title:</label>
+                    <input type="text" id="videoTitle" placeholder="Interesting title..." required>
+                </div>
+
+                <div class="form-group">
+                    <label for="videoDescription">Description (optional):</label>
+                    <textarea id="videoDescription" placeholder="Describe the video content..."></textarea>
+                </div>
+
+                <button type="submit" class="btn">Generate Code</button>
+            </form>
+
+            <div class="code-output" id="codeOutput">
+                <h3><i class="fas fa-code"></i> Generated Code</h3>
+                <div class="generated-code" id="generatedCode"></div>
+                <button class="btn copy-btn" id="copyButton">Copy to Clipboard</button>
+                <div class="success-message" id="successMessage">
+                    <i class="fas fa-check-circle"></i> Code copied to clipboard!
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>© 2023 Video Code Generator. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const addVideoForm = document.getElementById('addVideoForm');
+            const codeOutput = document.getElementById('codeOutput');
+            const generatedCode = document.getElementById('generatedCode');
+            const copyButton = document.getElementById('copyButton');
+            const successMessage = document.getElementById('successMessage');
+
+            // Función para extraer el src del iframe
+            function getIframeSrc(iframeCode) {
+                const parser = new DOMParser();
+                const doc = parser.parseFromString(iframeCode, 'text/html');
+                const iframe = doc.querySelector('iframe');
+
+                if (iframe && iframe.src) {
+                    return iframe.src;
+                }
+
+                // Intentar extraer el src usando expresiones regulares
+                const srcMatch = iframeCode.match(/src="([^"]+)"/);
+                if (srcMatch && srcMatch[1]) {
+                    return srcMatch[1];
+                }
+
+                return null;
+            }
+
+            // Manejar el envío del formulario
+            addVideoForm.addEventListener('submit', function (e) {
+                e.preventDefault();
+
+                const iframeCode = document.getElementById('videoIframe').value;
+                const title = document.getElementById('videoTitle').value;
+                const description = document.getElementById('videoDescription').value;
+
+                const iframeSrc = getIframeSrc(iframeCode);
+
+                if (!iframeSrc) {
+                    alert('Por favor, ingresa un código iframe válido de YouTube');
+                    return;
+                }
+
+                // Generar el código HTML
+                const htmlCode = `<!-- Video: ${title} -->
+<div class="video-card">
+    <div class="video-container">
+        <iframe src="${iframeSrc}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+    <div class="video-info">
+        <h3 class="video-title">${title}</h3>
+        <p class="video-description">${description}</p>
+    </div>
+</div>`;
+
+                // Mostrar el código generado
+                generatedCode.textContent = htmlCode;
+                codeOutput.style.display = 'block';
+
+                // Desplazarse al código generado
+                codeOutput.scrollIntoView({ behavior: 'smooth' });
+            });
+
+            // Copiar al portapapeles
+            copyButton.addEventListener('click', function () {
+                const textArea = document.createElement('textarea');
+                textArea.value = generatedCode.textContent;
+                document.body.appendChild(textArea);
+                textArea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textArea);
+
+                // Mostrar mensaje de éxito
+                successMessage.style.display = 'block';
+
+                // Ocultar mensaje después de 3 segundos
+                setTimeout(function () {
+                    successMessage.style.display = 'none';
+                }, 3000);
+            });
+        });
+    </script>
+</body>
+
+</html>

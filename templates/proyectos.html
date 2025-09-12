@@ -3,48 +3,280 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Flowchart</title>
+    <title>System Flow</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         body {
             margin: 0;
-            background: #202020;
+            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
             display: flex;
-            flex-direction: column; /* 🔽 Acomoda los divs en vertical */
+            flex-direction: column;
             align-items: center;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #fff;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            width: 100%;
+            max-width: 1200px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .description {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.5;
         }
 
         #container {
             width: 100vw;
-            height: 80vh; /* 🔽 Dejamos espacio para las otras imágenes */
+            max-width: 1200px;
+            height: 80vh;
             overflow: hidden;
             position: relative;
+            background: rgba(0, 0, 0, 0.6);
+            border-radius: 15px;
+            margin-bottom: 20px;
         }
 
         #flowchart {
             cursor: grab;
             transform-origin: center center;
             transition: transform 0.1s ease-out;
+            display: block;
+            margin: 0 auto;
         }
 
         #extra-images {
             width: 100%;
+            max-width: 1200px;
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 20px; /* separación entre imágenes */
+            gap: 20px;
             padding: 20px;
-            background: #181818;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 15px;
         }
 
         #extra-images img {
-            max-width: 45%; /* para que se vean lado a lado sin pasarse */
+            max-width: 45%;
             height: auto;
             border: 2px solid #444;
             border-radius: 8px;
+            cursor: pointer;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+
+        #extra-images img:hover {
+            transform: scale(1.03);
+            border-color: #666;
+        }
+
+        /* Modal para móviles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.95);
+            overflow: hidden;
+            touch-action: none;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .modal.active {
+            opacity: 1;
+        }
+        
+        .modal-content {
+            display: block;
+            margin: auto;
+            max-width: 100%;
+            max-height: 100%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            user-select: none;
+            -webkit-user-select: none;
+        }
+        
+        .close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            z-index: 1001;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            padding: 15px;
+            color: white;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
+            font-size: 16px;
+        }
+        
+        /* Loading spinner */
+        .loader {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 50px;
+            height: 50px;
+            border: 5px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: #fff;
+            animation: spin 1s ease-in-out infinite;
+        }
+        
+        @keyframes spin {
+            to { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+        
+        /* Botones de navegación */
+        .nav-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 40px;
+            color: rgba(255, 255, 255, 0.8);
+            cursor: pointer;
+            z-index: 1001;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+            background-color: rgba(0, 0, 0, 0.3);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            user-select: none;
+        }
+        
+        .prev {
+            left: 15px;
+        }
+        
+        .next {
+            right: 15px;
+        }
+        
+        /* Efectos para móviles */
+        @media (max-width: 768px) {
+            header {
+                padding: 15px;
+                margin-bottom: 20px;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .description {
+                font-size: 1rem;
+            }
+            
+            #container {
+                height: 60vh;
+            }
+            
+            #extra-images {
+                flex-direction: column;
+                padding: 15px;
+            }
+            
+            #extra-images img {
+                max-width: 100%;
+                margin-bottom: 15px;
+            }
+            
+            .nav-btn {
+                font-size: 30px;
+                width: 40px;
+                height: 40px;
+            }
+            
+            .close {
+                font-size: 35px;
+                top: 10px;
+                right: 10px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            .nav-btn {
+                font-size: 25px;
+                width: 35px;
+                height: 35px;
+            }
+            
+            .close {
+                font-size: 30px;
+            }
         }
     </style>
 </head>
 <body>
+    <header>
+    <h1><i class="fas fa-code"></i> System Flow</h1>
+    <p class="description">
+        The architecture is built on a central <strong>Laravel API backend</strong> connected to a 
+        <strong>MySQL database</strong>. It provides core services like 
+        <em>Scheduling, Inventory-Sales, and Billing</em>, with authentication via 
+        <strong>OAuth 2.0 (Google Login)</strong> and payments through 
+        <strong>Wompi</strong> and <strong>Epayco</strong>.
+        <br><br>
+        The system supports multiple frontends: a <strong>React.js web frontend</strong> and 
+        a <strong>second web frontend for farm booking</strong>, both using the backend API 
+        with their own login and payment flows.
+        <br><br>
+        An <strong>Android APK</strong> captures messages from WhatsApp/Telegram and connects 
+        to an <strong>LLM server</strong> to process commands, while 
+        <strong>voice assistants</strong> (like ChatGPT or Siri) allow users to interact naturally 
+        through spoken requests.
+    </p>
+</header>
+
+
     <!-- 🖼 Imagen con zoom -->
     <div id="container">
         <img id="flowchart" src="{{ url_for('static', filename='images/flowhart.png') }}" alt="Flowchart">
@@ -55,13 +287,32 @@
         <img src="{{ url_for('static', filename='images/1FH.png') }}" alt="Imagen 1">
         <img src="{{ url_for('static', filename='images/2FH.png') }}" alt="Imagen 2">
     </div>
+    
+    <!-- Modal para imagen ampliada en móviles -->
+    <div id="imageModal" class="modal">
+        <span class="close">&times;</span>
+        <div class="loader"></div>
+        <img class="modal-content" id="expandedImg">
+        <div class="caption" id="imgCaption"></div>
+        <a class="nav-btn prev">&#10094;</a>
+        <a class="nav-btn next">&#10095;</a>
+    </div>
 
     <script>
+        // Funcionalidad de zoom y arrastre para el flowchart
         const img = document.getElementById("flowchart");
         let scale = 1;
         let posX = 0, posY = 0;
         let isDragging = false;
         let startX, startY;
+
+        // Centrar la imagen al cargar
+        window.addEventListener('load', function() {
+            const container = document.getElementById('container');
+            posX = (container.clientWidth - img.width) / 2;
+            posY = (container.clientHeight - img.height) / 2;
+            updateTransform();
+        });
 
         // Zoom con rueda del mouse SOLO en el flowchart
         document.getElementById("container").addEventListener("wheel", (e) => {
@@ -97,6 +348,127 @@
         function updateTransform() {
             img.style.transform = `translate(${posX}px, ${posY}px) scale(${scale})`;
         }
+
+        // Funcionalidad del modal para las imágenes
+        document.addEventListener('DOMContentLoaded', function() {
+            // Elementos del DOM para el modal
+            const modal = document.getElementById('imageModal');
+            const modalImg = document.getElementById('expandedImg');
+            const captionText = document.getElementById('imgCaption');
+            const closeBtn = document.querySelector('.close');
+            const prevBtn = document.querySelector('.prev');
+            const nextBtn = document.querySelector('.next');
+            const loader = document.querySelector('.loader');
+            
+            // Obtener todas las imágenes de la galería
+            const images = document.querySelectorAll('#extra-images img');
+            let currentImageIndex = 0;
+            
+            // Función para abrir el modal
+            function openModal(index) {
+                currentImageIndex = index;
+                const img = images[currentImageIndex];
+                
+                // Mostrar loader
+                loader.style.display = 'block';
+                modalImg.style.display = 'none';
+                
+                // Mostrar modal
+                modal.style.display = 'block';
+                setTimeout(() => modal.classList.add('active'), 10);
+                
+                // Cargar imagen
+                modalImg.onload = function() {
+                    loader.style.display = 'none';
+                    modalImg.style.display = 'block';
+                };
+                
+                modalImg.src = img.src;
+                captionText.innerHTML = img.alt;
+                
+                // Actualizar estado de botones de navegación
+                updateNavButtons();
+            }
+            
+            // Actualizar estado de botones de navegación
+            function updateNavButtons() {
+                prevBtn.style.display = currentImageIndex === 0 ? 'none' : 'block';
+                nextBtn.style.display = currentImageIndex === images.length - 1 ? 'none' : 'block';
+            }
+            
+            // Cerrar modal
+            function closeModal() {
+                modal.classList.remove('active');
+                setTimeout(() => {
+                    modal.style.display = 'none';
+                }, 300);
+            }
+            
+            // Navegar a imagen anterior
+            function prevImage() {
+                if (currentImageIndex > 0) {
+                    openModal(currentImageIndex - 1);
+                }
+            }
+            
+            // Navegar a imagen siguiente
+            function nextImage() {
+                if (currentImageIndex < images.length - 1) {
+                    openModal(currentImageIndex + 1);
+                }
+            }
+            
+            // Event listeners para las imágenes
+            images.forEach((img, index) => {
+                img.addEventListener('click', () => openModal(index));
+            });
+            
+            // Event listeners para los controles del modal
+            closeBtn.addEventListener('click', closeModal);
+            prevBtn.addEventListener('click', prevImage);
+            nextBtn.addEventListener('click', nextImage);
+            
+            // Cerrar al hacer clic fuera de la imagen
+            modal.addEventListener('click', function(e) {
+                if (e.target === modal) {
+                    closeModal();
+                }
+            });
+            
+            // Navegación con teclado
+            document.addEventListener('keydown', function(e) {
+                if (modal.style.display === 'block') {
+                    if (e.key === 'Escape') closeModal();
+                    if (e.key === 'ArrowLeft') prevImage();
+                    if (e.key === 'ArrowRight') nextImage();
+                }
+            });
+            
+            // Soporte para gestos táctiles en móviles
+            let touchStartX = 0;
+            let touchEndX = 0;
+            
+            modalImg.addEventListener('touchstart', function(e) {
+                touchStartX = e.changedTouches[0].screenX;
+            }, false);
+            
+            modalImg.addEventListener('touchend', function(e) {
+                touchEndX = e.changedTouches[0].screenX;
+                handleSwipe();
+            }, false);
+            
+            function handleSwipe() {
+                const minSwipeDistance = 50; // Distancia mínima para considerar un deslizamiento
+                
+                if (touchStartX - touchEndX > minSwipeDistance) {
+                    // Deslizamiento hacia la izquierda -> siguiente imagen
+                    nextImage();
+                } else if (touchEndX - touchStartX > minSwipeDistance) {
+                    // Deslizamiento hacia la derecha -> imagen anterior
+                    prevImage();
+                }
+            }
+        });
     </script>
 </body>
 </html>
