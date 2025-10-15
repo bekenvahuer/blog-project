@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>System Flow</title>
+    <title>Constructor</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         body {
@@ -103,11 +104,11 @@
             opacity: 0;
             transition: opacity 0.3s ease;
         }
-        
+
         .modal.active {
             opacity: 1;
         }
-        
+
         .modal-content {
             display: block;
             margin: auto;
@@ -120,7 +121,7 @@
             user-select: none;
             -webkit-user-select: none;
         }
-        
+
         .close {
             position: absolute;
             top: 15px;
@@ -137,7 +138,7 @@
             align-items: center;
             justify-content: center;
         }
-        
+
         .caption {
             position: absolute;
             bottom: 0;
@@ -149,7 +150,7 @@
             background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
             font-size: 16px;
         }
-        
+
         /* Loading spinner */
         .loader {
             position: absolute;
@@ -163,11 +164,13 @@
             border-top-color: #fff;
             animation: spin 1s ease-in-out infinite;
         }
-        
+
         @keyframes spin {
-            to { transform: translate(-50%, -50%) rotate(360deg); }
+            to {
+                transform: translate(-50%, -50%) rotate(360deg);
+            }
         }
-        
+
         /* Botones de navegación */
         .nav-btn {
             position: absolute;
@@ -187,94 +190,92 @@
             justify-content: center;
             user-select: none;
         }
-        
+
         .prev {
             left: 15px;
         }
-        
+
         .next {
             right: 15px;
         }
-        
+
         /* Efectos para móviles */
         @media (max-width: 768px) {
             header {
                 padding: 15px;
                 margin-bottom: 20px;
             }
-            
+
             h1 {
                 font-size: 2rem;
             }
-            
+
             .description {
                 font-size: 1rem;
             }
-            
+
             #container {
                 height: 60vh;
             }
-            
+
             #extra-images {
                 flex-direction: column;
                 padding: 15px;
             }
-            
+
             #extra-images img {
                 max-width: 100%;
                 margin-bottom: 15px;
             }
-            
+
             .nav-btn {
                 font-size: 30px;
                 width: 40px;
                 height: 40px;
             }
-            
+
             .close {
                 font-size: 35px;
                 top: 10px;
                 right: 10px;
             }
         }
-        
+
         @media (max-width: 480px) {
             h1 {
                 font-size: 1.8rem;
             }
-            
+
             .nav-btn {
                 font-size: 25px;
                 width: 35px;
                 height: 35px;
             }
-            
+
             .close {
                 font-size: 30px;
             }
         }
     </style>
 </head>
+
 <body>
     <header>
-    <h1><i class="fas fa-code"></i> System Flow</h1>
-    <p class="description">
-        The architecture is built on a central <strong>Laravel API backend</strong> connected to a 
-        <strong>MySQL database</strong>. It provides core services like 
-        <em>Scheduling, Inventory-Sales, and Billing</em>, with authentication via 
-        <strong>OAuth 2.0 (Google Login)</strong> and payments through 
-        <strong>Wompi</strong> and <strong>Epayco</strong>.
-        <br><br>
-        The system supports multiple frontends: a <strong>React.js web frontend</strong> and 
-        a <strong>second web frontend for farm booking</strong>, both using the backend API 
-        with their own login and payment flows.
-        <br><br>
-        An <strong>Android APK</strong> captures messages from WhatsApp/Telegram and connects 
-        to an <strong>LLM server</strong> to process commands, while 
-        <strong>voice assistants</strong> (like ChatGPT or Siri) allow users to interact naturally 
-        through spoken requests.
-    </p>
-</header>
+        <h1><i class="fas fa-code"></i> Constructor </h1>
+        <p class="description">
+            The <strong>Constructor</strong> is the core web application where young creators build their own video
+            games. It features multiple interactive views, including the
+            <strong>Constructor, Gameplay, Node Editor, Card Editor,</strong> and even a <strong>Python Code
+                Editor</strong>. <br>Using computer vision, the system can recognize physical cards, while
+            <strong>AI</strong> assists in
+            explaining what each card,
+            node, or command does, helping learners understand programming concepts as they create. <br>Each chapter
+            concludes with the option to <em>export or publish</em> their projects, allowing students to share their
+            creations with friends, classmates, or family. <br>This section invites you to explore how the
+            <strong>Constructor</strong> works, a playful and intelligent environment designed to make learning game
+            development feel like pure magic.
+        </p>
+    </header>
 
 
     <!-- 🖼 Imagen con zoom -->
@@ -284,10 +285,10 @@
 
     <!-- 🖼🖼 Imágenes normales (sin zoom JS) -->
     <div id="extra-images">
-        <img src="{{ url_for('static', filename='images/1FH.png') }}" alt="Imagen 1">
-        <img src="{{ url_for('static', filename='images/2FH.png') }}" alt="Imagen 2">
+        <img src="{{ url_for('static', filename='images/17.PNG') }}" alt="Imagen 1">
+        <img src="{{ url_for('static', filename='images/18.PNG') }}" alt="Imagen 2">
     </div>
-    
+
     <!-- Modal para imagen ampliada en móviles -->
     <div id="imageModal" class="modal">
         <span class="close">&times;</span>
@@ -307,7 +308,7 @@
         let startX, startY;
 
         // Centrar la imagen al cargar
-        window.addEventListener('load', function() {
+        window.addEventListener('load', function () {
             const container = document.getElementById('container');
             posX = (container.clientWidth - img.width) / 2;
             posY = (container.clientHeight - img.height) / 2;
@@ -350,7 +351,7 @@
         }
 
         // Funcionalidad del modal para las imágenes
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             // Elementos del DOM para el modal
             const modal = document.getElementById('imageModal');
             const modalImg = document.getElementById('expandedImg');
@@ -359,43 +360,43 @@
             const prevBtn = document.querySelector('.prev');
             const nextBtn = document.querySelector('.next');
             const loader = document.querySelector('.loader');
-            
+
             // Obtener todas las imágenes de la galería
             const images = document.querySelectorAll('#extra-images img');
             let currentImageIndex = 0;
-            
+
             // Función para abrir el modal
             function openModal(index) {
                 currentImageIndex = index;
                 const img = images[currentImageIndex];
-                
+
                 // Mostrar loader
                 loader.style.display = 'block';
                 modalImg.style.display = 'none';
-                
+
                 // Mostrar modal
                 modal.style.display = 'block';
                 setTimeout(() => modal.classList.add('active'), 10);
-                
+
                 // Cargar imagen
-                modalImg.onload = function() {
+                modalImg.onload = function () {
                     loader.style.display = 'none';
                     modalImg.style.display = 'block';
                 };
-                
+
                 modalImg.src = img.src;
                 captionText.innerHTML = img.alt;
-                
+
                 // Actualizar estado de botones de navegación
                 updateNavButtons();
             }
-            
+
             // Actualizar estado de botones de navegación
             function updateNavButtons() {
                 prevBtn.style.display = currentImageIndex === 0 ? 'none' : 'block';
                 nextBtn.style.display = currentImageIndex === images.length - 1 ? 'none' : 'block';
             }
-            
+
             // Cerrar modal
             function closeModal() {
                 modal.classList.remove('active');
@@ -403,63 +404,63 @@
                     modal.style.display = 'none';
                 }, 300);
             }
-            
+
             // Navegar a imagen anterior
             function prevImage() {
                 if (currentImageIndex > 0) {
                     openModal(currentImageIndex - 1);
                 }
             }
-            
+
             // Navegar a imagen siguiente
             function nextImage() {
                 if (currentImageIndex < images.length - 1) {
                     openModal(currentImageIndex + 1);
                 }
             }
-            
+
             // Event listeners para las imágenes
             images.forEach((img, index) => {
                 img.addEventListener('click', () => openModal(index));
             });
-            
+
             // Event listeners para los controles del modal
             closeBtn.addEventListener('click', closeModal);
             prevBtn.addEventListener('click', prevImage);
             nextBtn.addEventListener('click', nextImage);
-            
+
             // Cerrar al hacer clic fuera de la imagen
-            modal.addEventListener('click', function(e) {
+            modal.addEventListener('click', function (e) {
                 if (e.target === modal) {
                     closeModal();
                 }
             });
-            
+
             // Navegación con teclado
-            document.addEventListener('keydown', function(e) {
+            document.addEventListener('keydown', function (e) {
                 if (modal.style.display === 'block') {
                     if (e.key === 'Escape') closeModal();
                     if (e.key === 'ArrowLeft') prevImage();
                     if (e.key === 'ArrowRight') nextImage();
                 }
             });
-            
+
             // Soporte para gestos táctiles en móviles
             let touchStartX = 0;
             let touchEndX = 0;
-            
-            modalImg.addEventListener('touchstart', function(e) {
+
+            modalImg.addEventListener('touchstart', function (e) {
                 touchStartX = e.changedTouches[0].screenX;
             }, false);
-            
-            modalImg.addEventListener('touchend', function(e) {
+
+            modalImg.addEventListener('touchend', function (e) {
                 touchEndX = e.changedTouches[0].screenX;
                 handleSwipe();
             }, false);
-            
+
             function handleSwipe() {
                 const minSwipeDistance = 50; // Distancia mínima para considerar un deslizamiento
-                
+
                 if (touchStartX - touchEndX > minSwipeDistance) {
                     // Deslizamiento hacia la izquierda -> siguiente imagen
                     nextImage();
@@ -471,4 +472,5 @@
         });
     </script>
 </body>
+
 </html>

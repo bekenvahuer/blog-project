@@ -14,6 +14,12 @@
     <div class="carousel-item">
       <img src="{{ url_for('static', filename='banner3.png') }}" class="d-block w-100" alt="Banner 3">
     </div>
+    <div class="carousel-item">
+      <img src="{{ url_for('static', filename='banner4.png') }}" class="d-block w-100" alt="Banner 4">
+    </div>
+    <div class="carousel-item">
+      <img src="{{ url_for('static', filename='banner5.png') }}" class="d-block w-100" alt="Banner 5">
+    </div>
   </div>
   <button class="carousel-control-prev" type="button" data-bs-target="#bannerCarousel" data-bs-slide="prev">
     <span class="carousel-control-prev-icon"></span>
@@ -25,6 +31,42 @@
 
 <!-- 📑 Sección de artículos -->
 <div class="row">
+  <div class="col-md-4 col-sm-6 mb-4">
+    <div class="card h-100 shadow-sm" data-card-id="article3">
+      <img src="{{ url_for('static', filename='images/11.PNG') }}" class="card-img-top" alt="Artículo 2">
+      <div class="card-body">
+        <h5 class="card-title">Little Mages: The Card Game –> Level 1: Hero Trial</h5>
+        <p class="card-text">Invites you to enter a magical world where programming feels like casting spells! Combine
+          cards representing methods and attributes as if they were powerful enchantments, and watch your creations come
+          to life. In this first level, you’ll begin your journey as an apprentice mage, learning the fundamentals of
+          Object-Oriented Programming (OOP) while building your very own exportable video game. It’s more than just
+          coding it’s magic that you can play!</p>
+        <a href="#" class="btn btn-sm btn-dark">Read more</a>
+      </div>
+
+      <!-- 🔹 Sección de reacciones -->
+      <div class="card-footer bg-light">
+        <div class="d-flex justify-content-between align-items-center">
+          <div>
+            <button class="btn btn-sm btn-outline-success me-1" onclick="likePost(this)">👍</button>
+            <span class="like-count">0</span>
+            <button class="btn btn-sm btn-outline-danger ms-2" onclick="dislikePost(this)">👎</button>
+            <span class="dislike-count">0</span>
+          </div>
+          <button class="btn btn-sm btn-outline-secondary" onclick="copyContent(this)">📋 Copy</button>
+        </div>
+
+        <!-- 🔹 Caja de comentarios -->
+        <div class="mt-3">
+          <textarea class="form-control form-control-sm comment-input" rows="2"
+            placeholder="Add a comment..."></textarea>
+          <button class="btn btn-sm btn-primary mt-2" onclick="addComment(this)">Comment</button>
+        </div>
+        <!-- 🔹 Lista de comentarios -->
+        <div class="comments-list mt-2"></div>
+      </div>
+    </div>
+  </div>
   <div class="col-md-4 col-sm-6 mb-4">
     <div class="card h-100 shadow-sm" data-card-id="article1">
       <img src="{{ url_for('static', filename='images/BlenderMouse.png') }}" class="card-img-top" alt="Artículo 1">
@@ -111,57 +153,15 @@
   </div>
 
   <div class="col-md-4 col-sm-6 mb-4">
-    <div class="card h-100 shadow-sm" data-card-id="article3">
-      <img src="{{ url_for('static', filename='images/11.PNG') }}" class="card-img-top" alt="Artículo 2">
-      <div class="card-body">
-        <h5 class="card-title">Linus Torvalds: The Rebel Genius Who Democratized Tech</h5>
-        <p class="card-text">In 1991, a 22-year-old Finnish student named Linus Torvalds released a
-          personal project: an open-source kernel called Linux. What started as an experiment
-          became the biggest tech revolution since the invention of the internet—proving that
-          world-changing innovation doesn’t require corporate backing, just vision and
-          persistence.
-          A product of the 80s hacker culture, Torvalds built a system where anyone could
-          modify and improve the code—defying the monopoly of giants like Microsoft. His
-          philosophy was simple: "Software is like sex; it's better when it's free." Yet beneath the
-          humor was a radical idea: technology should belong to everyone, not just corporations.</p>
-        <a href="#" class="btn btn-sm btn-dark">Read more</a>
-      </div>
-
-      <!-- 🔹 Sección de reacciones -->
-      <div class="card-footer bg-light">
-        <div class="d-flex justify-content-between align-items-center">
-          <div>
-            <button class="btn btn-sm btn-outline-success me-1" onclick="likePost(this)">👍</button>
-            <span class="like-count">0</span>
-            <button class="btn btn-sm btn-outline-danger ms-2" onclick="dislikePost(this)">👎</button>
-            <span class="dislike-count">0</span>
-          </div>
-          <button class="btn btn-sm btn-outline-secondary" onclick="copyContent(this)">📋 Copy</button>
-        </div>
-
-        <!-- 🔹 Caja de comentarios -->
-        <div class="mt-3">
-          <textarea class="form-control form-control-sm comment-input" rows="2"
-            placeholder="Add a comment..."></textarea>
-          <button class="btn btn-sm btn-primary mt-2" onclick="addComment(this)">Comment</button>
-        </div>
-        <!-- 🔹 Lista de comentarios -->
-        <div class="comments-list mt-2"></div>
-      </div>
-    </div>
-  </div>
-
-  <div class="col-md-4 col-sm-6 mb-4">
     <div class="card h-100 shadow-sm" data-card-id="article4">
       <img src="{{ url_for('static', filename='images/12.PNG') }}" class="card-img-top" alt="Artículo 3">
       <div class="card-body">
-        <h5 class="card-title">Santiago’s Story: Youth, Passion, and Future</h5>
-        <p class="card-text">In this video, you’ll meet Santiago, a 19-year-old Colombian who grew up in Medellín and
-          stands out for his discipline, passion, and vision for the future. With outstanding academic performance on
-          the ICFES exams, a deep love for football and FC Barcelona, and an active lifestyle that balances sports,
-          video games, and gym training, Santiago embodies dedication and enjoyment in equal measure. Moreover, with his
-          growing interest in technology and programming, he is exploring academic paths to build a solid professional
-          future full of opportunities.</p>
+        <h5 class="card-title">Little Mages: The Card Game / Level 2 : Super Hero</h5>
+        <p class="card-text">Marks your evolution from apprentice to true coding hero! With your magical training
+          complete, it’s time to level up and leave the spell cards behind. In this new challenge, you’ll harness the
+          power of Node Editing, connecting methods and attributes like a pro to shape your own advanced game logic.
+          Every node you link, every value you tweak, brings your game closer to perfection. It’s time to build, code,
+          and create like a true Super Hero of programming!</p>
         <a href="#" class="btn btn-sm btn-dark">Read more</a>
       </div>
 
@@ -227,12 +227,13 @@
     <div class="card h-100 shadow-sm" data-card-id="article6">
       <img src="{{ url_for('static', filename='images/1FH.png') }}" class="card-img-top" alt="Artículo 6">
       <div class="card-body">
-        <h5 class="card-title">🌐 Connecting Experiences: From Web to Messaging and Voice in One Flow</h5>
-        <p class="card-text">In this video, you’ll discover a visual map of how users, applications, and systems
-          interact within a modern digital ecosystem. From OAuth 2.0 authentication in React and Laravel, to payment
-          processing, sales reports via messaging, and voice assistant integration powered by an LLM, this flow
-          demonstrates how technology comes together to deliver complete, secure, and dynamic experiences. 🚀 Hit play
-          and see how every path in your applications connects!</p>
+        <h5 class="card-title">Unity Game Development Bootcamp – Powered by Generation</h5>
+        <p class="card-text">Was an incredible event where creativity met technology! I had the honor of serving as the
+          Senior Instructor, guiding an amazing group of participants that included mathematicians, software engineers,
+          3D artists, musicians, and programming students. Together, we explored the art and logic behind game creation
+          using Unity, turning ideas into fully playable experiences. It was a truly inspiring journey filled with
+          talent, passion, and collaboration. I invite you to watch the video reel showcasing the participants’ final
+          projects, a celebration of imagination and teamwork in action!</p>
         <a href="#" class="btn btn-sm btn-dark">Read more</a>
       </div>
 
@@ -302,12 +303,13 @@
       <div class="card h-100 shadow-sm" data-card-id="article8">
         <img src="{{ url_for('static', filename='images/14.PNG') }}" class="card-img-top" alt="Artículo 5">
         <div class="card-body">
-          <h5 class="card-title">🎬 Beken’s 3D Reel: Creativity and Technology in Action</h5>
-          <p class="card-text">In this video, I invite you to explore my portfolio of 3D-generated animations and
-            scenes, where creativity blends with technical skills to bring unique visual experiences to life. Through
-            this reel, you’ll see my abilities in 3D modeling, animation, and rendering, reflecting the passion and
-            attention to detail I put into every project. 🚀 Hit play and join me on this visual journey showcasing the
-            best of my work in the digital world!</p>
+          <h5 class="card-title">Augmented Reality Workshop – Scratchy in Motion</h5>
+          <p class="card-text">Was an unforgettable experience with high-school students exploring the future of
+            interactive technology. During this class, they learned the fundamentals of Augmented Reality (AR) and
+            brought their creativity to life by developing a project where, by pointing their mobile devices at a
+            target, a fully animated Scratchy (from The Simpsons) skeleton appeared in motion. Seeing their excitement
+            as they combined art, animation, and code to make their characters move in real space was truly rewarding. A
+            perfect blend of fun, learning, and innovation, turning curiosity into creation!</p>
           <a href="#" class="btn btn-sm btn-dark">Read more</a>
         </div>
 
@@ -339,12 +341,13 @@
       <div class="card h-100 shadow-sm" data-card-id="article9">
         <img src="{{ url_for('static', filename='images/15.png') }}" class="card-img-top" alt="Artículo 6">
         <div class="card-body">
-          <h5 class="card-title">🚀 From Full Stack to Cybersecurity: My Journey in a Job Interview</h5>
-          <p class="card-text">In this video, you’ll discover my story as a Full Stack Developer with over 5 years of
-            experience, my passion for developing video games with AR/VR, and how challenges have fueled my professional
-            growth. I also share my motivations, hobbies, achievements, and future plans: from specializing in
-            cybersecurity to leading projects that combine AI, innovation, and digital protection. Join me in this
-            simulated interview and explore the vision that drives my technological journey!</p>
+          <h5 class="card-title">Virtual Reality & Mixed Reality Workshop – University of Medellín</h5>
+          <p class="card-text">Was an extraordinary hands-on experience where students immersed themselves in the world
+            of VR development using Meta Oculus headsets. Throughout the workshop, participants learned how to design
+            and integrate virtual environments while experimenting with mixed reality gameplay. The highlight of the
+            event was a creative project that combined a real RC car equipped with a camera and a virtual racing
+            experience, much like Mario Kart brought to life! It was an inspiring session that blended innovation,
+            teamwork, and the thrill of seeing the virtual and real worlds collide in one amazing game.</p>
           <a href="#" class="btn btn-sm btn-dark">Read more</a>
         </div>
 
